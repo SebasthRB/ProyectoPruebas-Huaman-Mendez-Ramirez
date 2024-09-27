@@ -31,7 +31,7 @@ Route::controller(EmployeeController::class)->group(function() {
 });
 
 //Vista de productos
-Route::controller(ProductController::class)->group(function() {
+Route::controller(ProductController::class)->middleware('auth')->group(function() {
     Route::get('/products', 'index');
     Route::get('/products/create', 'create');
     Route::get('/products/{product}', 'show');
@@ -57,6 +57,7 @@ Route::controller(ProductPurchaseController::class)->group(function() {
     Route::get('/productsPurchases/create', 'create');
     Route::get('/productsPurchases/{productPurchase}', 'show');
 });
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
