@@ -33,7 +33,7 @@ class ProductControllerTest extends TestCase
      */
     public function test_guest_access_to_show_product()
     {
-        $this->get('/products/1') // Reemplaza con un ID de producto existente o ficticio
+        $this->get('/products/1') // Probar con un ID de producto existente o ficticio (ID probado: 1)
             ->assertStatus(302)
             ->assertRedirect('/login');
     }

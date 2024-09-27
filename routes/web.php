@@ -24,7 +24,7 @@ use App\Http\Controllers\SupplierController;
 Route::get('/', HomeController::class); 
 
 //Vista de empleados
-Route::controller(EmployeeController::class)->group(function() {
+Route::controller(EmployeeController::class)->middleware('auth')->group(function() {
     Route::get('/employees', 'index');
     Route::get('/employees/create', 'create');
     Route::get('/employees/{employee}', 'show');
@@ -38,21 +38,21 @@ Route::controller(ProductController::class)->middleware('auth')->group(function(
 });
 
 //Vista de proveedores
-Route::controller(SupplierController::class)->group(function() {
+Route::controller(SupplierController::class)->middleware('auth')->group(function() {
     Route::get('/suppliers', 'index');
     Route::get('/suppliers/create', 'create');
     Route::get('/suppliers/{supplier}', 'show');
 });
 
 //Vista de compras
-Route::controller(PurchaseController::class)->group(function() {
+Route::controller(PurchaseController::class)->middleware('auth')->group(function() {
     Route::get('/purchases', 'index');
     Route::get('/purchases/create', 'create');
     Route::get('/purchases/{purchase}', 'show');
 });
 
 //Vista de relación productos -> compras
-Route::controller(ProductPurchaseController::class)->group(function() {
+Route::controller(ProductPurchaseController::class)->middleware('auth')->group(function() {
     Route::get('/productsPurchases', 'index');
     Route::get('/productsPurchases/create', 'create');
     Route::get('/productsPurchases/{productPurchase}', 'show');
