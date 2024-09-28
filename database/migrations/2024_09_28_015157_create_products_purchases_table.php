@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProductsPurchasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products_purchases', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('purchase_id')->constrained('purchases');
+            $table->foreignId('product_id')->constrained('products');
+            $table->integer('quantity_purchased');
+            $table->primary(['purchase_id', 'product_id']);
         });
     }
 
@@ -24,4 +26,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('products_purchases');
     }
-};
+}
