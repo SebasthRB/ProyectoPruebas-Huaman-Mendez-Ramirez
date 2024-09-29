@@ -19,6 +19,14 @@ class CreateEmployeesTable extends Migration
             $table->string('address', 100)->nullable();
             $table->string('phone', 15)->nullable();
             $table->string('email', 100)->nullable();
+
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
