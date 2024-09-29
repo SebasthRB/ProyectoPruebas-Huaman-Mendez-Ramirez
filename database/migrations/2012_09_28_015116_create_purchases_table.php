@@ -12,7 +12,7 @@ class CreatePurchasesTable extends Migration
     public function up(): void
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->id('purchase_id');
+            $table->id();
             $table->string('ciaf_number', 50)->nullable();
             $table->dateTime('purchase_date_time');
             $table->foreignId('employee_id')->constrained('employees');

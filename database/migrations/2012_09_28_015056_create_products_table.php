@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id');
+            $table->id();
             $table->string('name', 100);
             $table->text('description')->nullable();
             $table->date('entry_date')->nullable();
