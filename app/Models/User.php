@@ -12,6 +12,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+use Illuminate\Support\Facades\Hash; // Importar Hash
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -64,6 +66,17 @@ class User extends Authenticatable
             }
         );
     }
+
+    //HASHEAR contraseñas
+    protected function password(): Attribute // Mutador para el password
+    {
+        return new Attribute(
+            set: function ($value) {
+                return Hash::make($value); // Hashear la contraseña
+            }
+        );
+    }
+
 
     /**
      * The accessors to append to the model's array form.
