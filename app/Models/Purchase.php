@@ -17,7 +17,7 @@ class Purchase extends Model
     protected function ciafNumber(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => strtoupper($value),
+            set: fn ($value) => strtoupper($value), //Mutador
         );
     }
 }

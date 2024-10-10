@@ -55,7 +55,11 @@ class User extends Authenticatable
     protected function name(): Attribute
     {
         return new Attribute(
-            set: function($value) {
+            get: function($value) { //Accesor
+                return ucwords($value);
+            },
+
+            set: function($value) { //Mutador
                 return strtolower($value);
             }
         );

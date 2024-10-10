@@ -12,22 +12,26 @@ class Employee extends Model
     use HasFactory;
 
     /**
-     * Mutador para asegurarse de que el campo 'first_name' se almacene en minúsculas.
+     * Mutador: almacena 'first_name' en minúsculas.
+     * Accesor: devuelve 'first_name' con cada palabra iniciando en mayúscula.
      */
     protected function firstName(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => strtolower($value),
+            set: fn ($value) => strtolower($value), // Mutador
+            get: fn ($value) => ucwords(strtolower($value)) // Accesor: cada palabra con la primera letra en mayúscula
         );
     }
 
     /**
-     * Mutador para asegurarse de que el campo 'last_name' se almacene en minúsculas.
+     * Mutador: almacena 'last_name' en minúsculas.
+     * Accesor: devuelve 'last_name' con cada palabra iniciando en mayúscula.
      */
     protected function lastName(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => strtolower($value),
+            set: fn ($value) => strtolower($value), // Mutador
+            get: fn ($value) => ucwords(strtolower($value)) // Accesor: cada palabra con la primera letra en mayúscula
         );
     }
 }
